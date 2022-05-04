@@ -1,0 +1,107 @@
+---
+title: N 叉树数据结构
+date: 2022-05-04
+---
+
+### N 叉树介绍
+
+在计算机科学中，树是一种十分重要的数据结构。树被描述为一种分层数据抽象模型，常用来描述数据间的层级关系和组织结构。树也是一种非顺序的数据结构。
+
+在开发 UI 组件，如侧栏菜单、级联选择器、表格、树形选择器等的过程中，我们经常会遇到需要处理数据结构——「Tree」的情况。
+
+<Image
+  alt={`tree structure case`}
+  src={`/images/tree_structure/1.png`}
+  width={1698}
+  height={680}
+  border
+/>
+
+### 代码示例
+
+```js
+let tree = [
+  {
+    id: "1",
+    title: "节点1",
+    children: [
+      {
+        id: "1-1",
+        title: "节点1-1",
+      },
+      {
+        id: "1-2",
+        title: "节点1-2",
+      },
+    ],
+  },
+  {
+    id: "2",
+    title: "节点2",
+    children: [
+      {
+        id: "2-1",
+        title: "节点2-1",
+      },
+    ],
+  },
+];
+```
+
+### 遍历树结构
+
+树结构的常用场景之一就是遍历，而遍历又分为广度优先遍历、深度优先遍历。其中深度优先遍历是可递归的，而广度优先遍历是非递归的，通常用循环来实现。深度优先遍历又分为先序遍历、后序遍历，二叉树还有中序遍历，实现方法可以是递归，也可以是循环。
+
+遍历方法有两种：
+
+1. 深度优先
+2. 广度优先
+
+### 列表和树结构
+
+列表结构通常是在节点信息中给定了父级元素的 id，然后通过这个依赖关系将列表转换为树形结构，列表结构是类似于：
+
+```js
+let list = [
+  {
+    id: "1",
+    title: "节点1",
+    parentId: "",
+  },
+  {
+    id: "1-1",
+    title: "节点1-1",
+    parentId: "1",
+  },
+  {
+    id: "1-2",
+    title: "节点1-2",
+    parentId: "1",
+  },
+  {
+    id: "2",
+    title: "节点2",
+    parentId: "",
+  },
+  {
+    id: "2-1",
+    title: "节点2-1",
+    parentId: "2",
+  },
+];
+```
+
+列表结构转为树结构，就是把所有非根节点放到对应父节点的 children 数组中，然后把根节点提取出来：
+
+```js
+function listToTree(list) {
+  let info = list.reduce(
+    (map, node) => ((map[node.id] = node), (node.children = []), map),
+    {}
+  );
+  return list.filter((node) => {
+    info[node.parentId] && info[node.parentId].children.push(node);
+    return !node.parentId;
+  });
+}
+```

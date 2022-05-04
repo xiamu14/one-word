@@ -2,8 +2,9 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial,
+    "Heti Hei", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
 }
 
 a {
@@ -13,4 +14,51 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  --main-font-color: #1a202c;
+  --main-bgd-color: #f7fafc;
+  --selection-bgd-color: #0c344b;
+  --white-color: #fff;
+  --link-color: #3182ce;
+  --border-color: #e2e8f0;
+  --code-bgd-color: #f6f8fa;
+  --code-inline-bgd-color: #edf2f7;
+  --list-bullet-color: #a0aec0;
+  --search-highlight-bg-color: #ebf8ff;
+  --tag-media-color: #2d3748;
+  --gradient1-color: #2f3747;
+  --gradient2-color: #0d0f14;
+  --header-btn-color: #4a5568;
+  --code-inner-color: #718096;
+  --code-token1-color: #d5408c;
+  --code-token2-color: #805ad5;
+  --code-token3-color: #319795;
+  --code-token4-color: #dd6b21;
+  --code-token5-color: #690;
+  --code-token6-color: #9a6e3a;
+  --code-token7-color: #e90;
+  --code-linenum-color: #cbd5e0;
+  --code-added-color: #47bb78;
+  --code-added-bg-color: #d9f4e6;
+  --code-deleted-color: #e53e3e;
+  --code-deleted-bg-color: #f5e4e7;
+  --code-highlight-color: #a0aec0;
+  --code-highlight-bg-color: #e2e8f0;
+  --code-edit-bg-color: #c3dafe;
+  --code-result-bg-color: #e7edf3;
+  --red-color: #ff4f56;
+  --green-color: #15bd76;
+  --grey-color: #3d556b;
+  --grey-bg-color: #8fa6b2;
+  --dark-color: #0c344b;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+li::marker {
+  color: rgba(163, 163, 163, 0.9);
 }

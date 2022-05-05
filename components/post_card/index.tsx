@@ -1,7 +1,7 @@
 import Link from "next/link";
 import clsx from "clsx";
 
-export default function BlogPostCard({
+export default function PostCard({
   title,
   slug,
   gradient,

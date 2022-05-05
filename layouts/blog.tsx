@@ -19,7 +19,7 @@ export default function BlogLayout({
 }: PropsWithChildren<{ post: Post }>) {
   return (
     <Container>
-      <article className="flex flex-col items-start justify-center w-full max-w-3xl mx-auto mb-16">
+      <article className="flex flex-col items-start justify-center w-full mx-auto px-2 mb-16">
         <h1 className="heti heti--classic mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
           {post.title}
         </h1>

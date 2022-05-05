@@ -1,5 +1,6 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import rehypePrism from "rehype-prism-plus";
+import readingTime from "reading-time";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -16,11 +17,24 @@ export const Post = defineDocumentType(() => ({
       description: "The date of the post",
       required: true,
     },
+    draft: {
+      type: "boolean",
+      description: "draft",
+    },
+    recommend: {
+      type: "boolean",
+      description: "recommend",
+    },
   },
   computedFields: {
     url: {
       type: "string",
-      resolve: (post) => `/posts/${post._raw.flattenedPath}`,
+      resolve: (post) => `/post/${post._raw.flattenedPath}`,
+    },
+    readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
+    wordCount: {
+      type: "number",
+      resolve: (doc) => doc.body.raw.split(/\s+/gu).length,
     },
   },
 }));

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { FiGithub, FiTwitter } from "react-icons/fi";
+import { BsGithub, BsTwitter } from "react-icons/bs";
 
 import Footer from "../footer";
 import styles from "./index.module.scss";
@@ -36,7 +36,7 @@ export default function Container(props: React.PropsWithChildren<{}>) {
 
   return (
     <div className="flex w-[100vw] h-[100vh] overflow-x-hidden overflow-y-scroll justify-center items-center">
-      <div className=" flex flex-col items-center justify-between max-w-[1000px] w-[70vw] h-full margin-auto">
+      <div className=" flex flex-col items-center justify-between w-4xl h-full margin-auto">
         <div
           className={`flex w-full justify-start items-center px-4 sticky  ${styles["nav-box"]}`}
         >
@@ -51,7 +51,7 @@ export default function Container(props: React.PropsWithChildren<{}>) {
           {/* <div className="flex-1"></div> */}
           <nav className="flex items-center justify-between relative">
             <NavItem href="/" text="Home" />
-            <NavItem href="/blog" text="Blog" />
+            <NavItem href="/posts" text="Blog" />
             <NavItem href="/snippets" text="Snippets" />
             <NavItem href="/profile" text="Profile" />
             <NavItem href="/dashboard" text="Dashboard" />
@@ -64,7 +64,7 @@ export default function Container(props: React.PropsWithChildren<{}>) {
               target="_blank"
               rel="noreferrer"
             >
-              <FiGithub size={20} />
+              <BsGithub size={20} />
             </a>
           </div>
           <div className="ml-4">
@@ -75,7 +75,7 @@ export default function Container(props: React.PropsWithChildren<{}>) {
               target="_blank"
               rel="noreferrer"
             >
-              <FiTwitter size={20} />
+              <BsTwitter size={20} />
             </a>
           </div>
         </div>

@@ -4,8 +4,8 @@ import Image from "next/image";
 import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts, Post } from "contentlayer/generated";
 import Container from "../components/container";
-import BlogPostCard from "../components/blog_post_card";
-import VideoCard from "../components/video_card";
+import PostCard from "../components/post_card";
+import PostListItem from "../components/post_list_item";
 
 export async function getStaticProps() {
   const posts = allPosts.sort((a, b) => {
@@ -14,21 +14,27 @@ export async function getStaticProps() {
   return { props: { posts } };
 }
 
-function PostCard(post: Post) {
-  return (
-    <div className="mb-6">
-      <time dateTime={post.date} className="block text-sm text-slate-600">
-        {format(parseISO(post.date), "LLLL d, yyyy")}
-      </time>
-      <h2 className="text-lg">
-        <Link href={post.url}>
-          <a className="text-blue-700 hover:text-blue-900">{post.title}</a>
-        </Link>
-      </h2>
-    </div>
-  );
-}
-
+const readAll = (
+  <Link href="/blog">
+    <a className="flex mt-8 items-center text-gray-600 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6 px-1">
+      Read all posts
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        className="h-6 w-6 ml-1"
+      >
+        <path
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
+        />
+      </svg>
+    </a>
+  </Link>
+);
 export default function Home({ posts }: { posts: Post[] }) {
   return (
     <Container>
@@ -63,41 +69,23 @@ export default function Home({ posts }: { posts: Post[] }) {
         </h3>
 
         <div className="flex gap-6 flex-col md:flex-row px-1">
-          <BlogPostCard
+          <PostCard
             title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
             slug="style-guides-component-libraries-design-systems"
             gradient="from-[#D8B4FE] to-[#818CF8]"
           />
-          <BlogPostCard
+          <PostCard
             title="Rust Is The Future of JavaScript Infrastructure"
             slug="rust"
             gradient="from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]"
           />
-          <BlogPostCard
+          <PostCard
             title="Past, Present, and Future of React State Management"
             slug="react-state-management"
             gradient="from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]"
           />
         </div>
-        <Link href="/blog">
-          <a className="flex mt-8 items-center text-gray-600 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6 px-1">
-            Read all posts
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="h-6 w-6 ml-1"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-              />
-            </svg>
-          </a>
-        </Link>
+        {readAll}
 
         <h3 className="heti--classic font-bold text-1xl md:text-3xl tracking-tight mb-4 mt-16 text-black dark:text-white">
           推荐文章
@@ -108,54 +96,32 @@ export default function Home({ posts }: { posts: Post[] }) {
             open-source software. This course is 12 hours long and is completely
             live streamed.
           </p>
-          <VideoCard
+          <PostListItem
             index="01"
             href="https://www.youtube.com/watch?v=MxR5I5_hOKk&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=2"
             length="1:02:45"
             title="Introduction to React 2025"
           />
-          <VideoCard
+          <PostListItem
             index="02"
             href="https://www.youtube.com/watch?v=AGl52moyISU&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=3"
             length="54:22"
             title="Firestore, Chakra UI, Absolute Imports"
           />
-          <VideoCard
+          <PostListItem
             index="03"
             href="https://www.youtube.com/watch?v=3g6-v3_BNbM&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=4"
             length="1:08:30"
             title="Designing & Building the Dashboard"
           />
-          <VideoCard
+          <PostListItem
             index="04"
             href="https://www.youtube.com/watch?v=u8iv_yhSRI8&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=5"
             length="1:13:45"
             title="Firebase Admin with Next.js + SWR"
           />
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.youtube.com/playlist?list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1"
-            className="flex items-center mt-8 text-gray-600 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6"
-          >
-            Watch all videos
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="h-6 w-6 ml-1"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
-              />
-            </svg>
-          </a>
+          {readAll}
         </div>
-
         <span className="h-16" />
       </div>
     </Container>

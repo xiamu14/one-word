@@ -28,7 +28,9 @@ function NavItem({ href, text }: { href: string; text: string }) {
   );
 }
 
-export default function Container(props: React.PropsWithChildren<{}>) {
+export default function Container(
+  props: React.PropsWithChildren<{ title?: string }>
+) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -36,6 +38,9 @@ export default function Container(props: React.PropsWithChildren<{}>) {
 
   return (
     <div className="flex w-[100vw] h-[100vh] overflow-x-hidden overflow-y-scroll justify-center items-center">
+      <Head>
+        <title>{props.title ?? "只言片语"}</title>
+      </Head>
       <div className=" flex flex-col items-center justify-between w-4xl h-full margin-auto">
         <div
           className={`flex w-full justify-start items-center px-4 sticky  ${styles["nav-box"]}`}
@@ -48,13 +53,12 @@ export default function Container(props: React.PropsWithChildren<{}>) {
               height={32}
             />
           </div>
-          {/* <div className="flex-1"></div> */}
           <nav className="flex items-center justify-between relative">
-            <NavItem href="/" text="Home" />
-            <NavItem href="/posts" text="Blog" />
-            <NavItem href="/snippets" text="Snippets" />
-            <NavItem href="/profile" text="Profile" />
-            <NavItem href="/dashboard" text="Dashboard" />
+            <NavItem href="/" text="只言片语" />
+            <NavItem href="/posts" text="博客" />
+            <NavItem href="/snippets" text="片段" />
+            <NavItem href="/profile" text="我的" />
+            <NavItem href="/dashboard" text="仪表板" />
           </nav>
           <div className="ml-4">
             <a

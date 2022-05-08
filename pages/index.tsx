@@ -17,7 +17,7 @@ export async function getStaticProps() {
 const readAll = (
   <Link href="/blog">
     <a className="flex mt-8 items-center text-gray-600 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6 px-1">
-      Read all posts
+      全部文章
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -39,20 +39,23 @@ export default function Home({ posts }: { posts: Post[] }) {
   return (
     <Container>
       <div className="flex flex-col justify-center items-start max-w-4xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
-        <div className="flex flex-col-reverse sm:flex-row items-start">
+        <div className="px-1 w-full flex justify-start mb-12 sm:flex-row items-start">
           <div className="flex flex-col pr-24">
-            <h1 className="font-bold text-2xl md:text-4xl tracking-tight mb-2 text-black dark:text-white">
-              Ben
-            </h1>
-            <h2 className="text-gray-700 dark:text-gray-200 mb-4">
-              Director of Developer Relations at{" "}
-              <span className="font-semibold">Vercel</span>
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-16">
-              Helping developers build a faster web. Teaching about web
-              development, serverless, and React / Next.js.
-            </p>
+            <div className="heti heti--poetry">
+              <p className="heti-x-large">
+                少年听雨歌楼上，红烛昏罗帐。
+                <br />
+                壮年听雨客舟中，江阔云低，断雁叫西风。
+                <br />
+                而今听雨僧庐下，鬓已星星也。
+                <br />
+                悲欢离合总无情，一任阶前，点滴到天明。
+              </p>
+              <p>- [南宋] 蒋捷《虞美人·听雨》</p>
+            </div>
           </div>
+
+          <div className="flex-1"></div>
 
           <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
             <Image
@@ -60,7 +63,7 @@ export default function Home({ posts }: { posts: Post[] }) {
               height={176}
               width={176}
               src="/images/avatar.png"
-              className="rounded-full filter grayscale"
+              className="rounded-full filter grayscale-9"
             />
           </div>
         </div>
@@ -70,17 +73,18 @@ export default function Home({ posts }: { posts: Post[] }) {
 
         <div className="flex gap-6 flex-col md:flex-row px-1">
           <PostCard
-            title="Everything I Know About Style Guides, Design Systems, and Component Libraries"
+            title="
+            Flutter 为应用开发带来了革新：一套代码库，即可构建、发布适用于不同系统的精美应用。"
             slug="style-guides-component-libraries-design-systems"
             gradient="from-[#D8B4FE] to-[#818CF8]"
           />
           <PostCard
-            title="Rust Is The Future of JavaScript Infrastructure"
+            title="我认为，我们的眼光不应局限于库和框架，而应该重新发现模式和原则的价值。"
             slug="rust"
             gradient="from-[#6EE7B7] via-[#3B82F6] to-[#9333EA]"
           />
           <PostCard
-            title="Past, Present, and Future of React State Management"
+            title="Solid.js 使用了 React 的许多符合人体工程学的部分，同时最大程度减少了混乱和错误。"
             slug="react-state-management"
             gradient="from-[#FDE68A] via-[#FCA5A5] to-[#FECACA]"
           />
@@ -92,33 +96,31 @@ export default function Home({ posts }: { posts: Post[] }) {
         </h3>
         <div className="px-1">
           <p className="text-gray-600 dark:text-gray-400 mb-4">
-            Build and deploy a modern SaaS application using the most popular
-            open-source software. This course is 12 hours long and is completely
-            live streamed.
+            代码生成器框架 Codegem 的使用教程
           </p>
           <PostListItem
             index="01"
             href="https://www.youtube.com/watch?v=MxR5I5_hOKk&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=2"
-            length="1:02:45"
-            title="Introduction to React 2025"
+            length="15 分钟"
+            title="略窥门径：Codegem 的简介"
           />
           <PostListItem
             index="02"
             href="https://www.youtube.com/watch?v=AGl52moyISU&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=3"
-            length="54:22"
-            title="Firestore, Chakra UI, Absolute Imports"
+            length="30 分钟"
+            title="小试牛刀：快速生成 SVG 图标组件库（React）"
           />
           <PostListItem
             index="03"
             href="https://www.youtube.com/watch?v=3g6-v3_BNbM&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=4"
-            length="1:08:30"
-            title="Designing & Building the Dashboard"
+            length="43分钟"
+            title="庖丁解牛：解析 Codegem 源码"
           />
           <PostListItem
             index="04"
             href="https://www.youtube.com/watch?v=u8iv_yhSRI8&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=5"
-            length="1:13:45"
-            title="Firebase Admin with Next.js + SWR"
+            length="40分钟"
+            title="驾轻就熟：自定义加载器（load）和生成器（machine）"
           />
           {readAll}
         </div>

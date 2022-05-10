@@ -39,7 +39,7 @@ export default function Container(
   return (
     <div className="flex w-[100vw] h-[100vh] overflow-x-hidden overflow-y-scroll justify-center items-center">
       <Head>
-        <title>{props.title ?? "只言片语"}</title>
+        <title>{props.title ?? "言之有物"}</title>
       </Head>
       <div className=" flex flex-col items-center justify-between w-4xl h-full margin-auto">
         <div
@@ -54,7 +54,7 @@ export default function Container(
             />
           </div>
           <nav className="flex items-center justify-between relative">
-            <NavItem href="/" text="只言片语" />
+            <NavItem href="/" text="言之有物" />
             <NavItem href="/posts" text="博客" />
             <NavItem href="/snippets" text="片段" />
             <NavItem href="/profile" text="我的" />

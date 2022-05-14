@@ -16,7 +16,7 @@ export default function Posts({
           这是我的博客专栏，名曰“言之有物”，出自《周易·家人》：“君子以言有物，而行有恒”。
         </p>
         <p className="mb-2 text-gray-600 dark:text-gray-400">
-          {`我从 2019 年开始写作，迄今为止，我已经写了 ${posts.length} 篇文章，记录一些各种知识和生活感受。`}
+          {`迄今为止，我已经写了 ${posts.length} 篇文章，记录各种知识和生活感受。`}
         </p>
 
         <div className="mb-16"></div>

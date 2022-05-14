@@ -1,0 +1,45 @@
+.inkstone {
+  font-family: "Nunito", times, "Heti Song", serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  color: rgb(57, 57, 57);
+}
+
+.inkstone code {
+  font-family: monospace, times, "Heti Song", serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.inkstone-x-large {
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+}
+
+.inkstone-paragraph h3 {
+  font-size: 20px;
+  line-height: 36px;
+  font-weight: 800;
+  margin-block-start: 12px;
+  margin-block-end: 24px;
+  letter-spacing: 0.1em;
+}
+
+.inkstone-paragraph p {
+  margin-block-start: 12px;
+  margin-block-end: 24px;
+  letter-spacing: 0.05em;
+}
+
+.inkstone-paragraph p > code {
+  background: var(--code-bgd-color);
+  color: var(--code-inner-color);
+  vertical-align: baseline;
+  padding: 0.05em 0.3em 0.2em;
+  display: inline;
+  border-radius: 5px;
+}
+
+.inkstone-paragraph ol,
+.inkstone-paragraph ul {
+  padding-inline-start: 36px;
+}

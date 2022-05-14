@@ -19,8 +19,8 @@ export default function BlogLayout({
 }: PropsWithChildren<{ post: Post }>) {
   return (
     <Container>
-      <article className="flex flex-col items-start justify-center w-full mx-auto px-2 mb-16">
-        <h1 className="heti heti--classic mb-4 text-2xl font-bold tracking-tight text-black md:text-4xl dark:text-white">
+      <article className="inkstone-paragraph flex flex-col items-start justify-center w-full mx-auto px-2 mb-16">
+        <h1 className="mb-4 text-1xl font-bold tracking-tight md:text-3xl dark:text-white">
           {post.title}
         </h1>
         <div className="flex flex-col items-start justify-between w-full px-2 mt-2 md:flex-row md:items-center">
@@ -32,10 +32,10 @@ export default function BlogLayout({
               src="/images/avatar.png"
               className="rounded-full"
             />
-            <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
+            <span className=" ml-2 text-sm text-gray-700 dark:text-gray-300">
               {"Ben / "}
               {format(parseISO(post.date), "MMMM dd, yyyy")}
-            </p>
+            </span>
           </div>
         </div>
         <div className="heti heti--classic w-full px-2 mt-4 prose dark:prose-dark max-w-none">

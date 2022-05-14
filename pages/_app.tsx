@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import "../styles/prism_simple.css";
-import "../styles/heti.css";
+import "../styles/inkstone.css";
 import "windi.css";
 import type { AppProps } from "next/app";
 

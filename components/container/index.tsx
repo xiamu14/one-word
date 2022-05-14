@@ -8,16 +8,21 @@ import { BsGithub, BsTwitter } from "react-icons/bs";
 
 import Footer from "../footer";
 import styles from "./index.module.scss";
-function NavItem({ href, text }: { href: string; text: string }) {
-  const router = useRouter();
-  const isActive = (router.asPath = href);
-
+function NavItem({
+  href,
+  text,
+  isActive,
+}: {
+  href: string;
+  text: string;
+  isActive: boolean;
+}) {
   return (
     <Link href={href}>
       <a
         className={clsx(
           isActive
-            ? "font-semibold text-gray-800 dark:text-gray-200"
+            ? "font-semibold text-gray-700 dark:text-gray-200"
             : "font-normal text-gray-600 dark:text-gray-400",
           "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
         )}
@@ -33,6 +38,7 @@ export default function Container(
 ) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+  const router = useRouter();
 
   const { children } = props;
 
@@ -54,11 +60,27 @@ export default function Container(
             />
           </div>
           <nav className="flex items-center justify-between relative">
-            <NavItem href="/" text="言之有物" />
-            <NavItem href="/posts" text="博客" />
-            <NavItem href="/snippets" text="片段" />
-            <NavItem href="/profile" text="我的" />
-            <NavItem href="/dashboard" text="仪表板" />
+            <NavItem
+              href="/"
+              text="言之有物"
+              isActive={router.pathname === "/"}
+            />
+            <NavItem
+              href="/posts"
+              text="博客"
+              isActive={router.pathname.includes("/post")}
+            />
+            <NavItem
+              href="/snippets"
+              text="片段"
+              isActive={router.pathname === "/snippets"}
+            />
+            {/* <NavItem href="/profile" text="我的" /> */}
+            <NavItem
+              href="/dashboard"
+              text="仪表盘"
+              isActive={router.pathname === "/dashboard"}
+            />
           </nav>
           <div className="ml-4">
             <a

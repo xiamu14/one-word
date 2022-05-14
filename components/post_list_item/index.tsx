@@ -15,12 +15,12 @@ export default function PostListItem({
     <Link href={href}>
       <a className="w-full" aria-label={title} rel="noopener noreferrer">
         <div className="w-full border-b border-gray-200 dark:border-gray-700 py-4 transform hover:scale-[1.01] transition-all">
-          <div className="flex flex-col sm:flex-row justify-between items-baseline">
+          <div className="w-full flex flex-col sm:flex-row justify-between items-baseline">
             <div className="flex items-center">
-              <div className="text-gray-300 dark:text-gray-400 text-left mr-6">
+              <div className="text-gray-400 dark:text-gray-400 text-left mr-6">
                 {index}
               </div>
-              <h4 className="text-lg font-medium w-full text-gray-800 dark:text-gray-100">
+              <h4 className="text-lg font-medium w-full dark:text-gray-100">
                 {title}
               </h4>
             </div>

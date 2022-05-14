@@ -6,6 +6,8 @@ import { allPosts, Post } from "contentlayer/generated";
 import Container from "../components/container";
 import PostCard from "../components/post_card";
 import PostListItem from "../components/post_list_item";
+import React from "react";
+import BlockTitle from "../components/block_title";
 
 export async function getStaticProps() {
   const posts = allPosts.sort((a, b) => {
@@ -39,10 +41,10 @@ export default function Home({ posts }: { posts: Post[] }) {
   return (
     <Container>
       <div className="flex flex-col justify-center items-start max-w-4xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
-        <div className="px-1 w-full flex justify-start mb-12 sm:flex-row items-start">
+        <div className="px-1 w-full flex justify-start mb-16 sm:flex-row items-start">
           <div className="flex flex-col pr-24">
-            <div className="heti heti--poetry">
-              <p className="heti-x-large">
+            <div>
+              <p className="inkstone-x-large">
                 少年听雨歌楼上，红烛昏罗帐。
                 <br />
                 壮年听雨客舟中，江阔云低，断雁叫西风。
@@ -51,27 +53,26 @@ export default function Home({ posts }: { posts: Post[] }) {
                 <br />
                 悲欢离合总无情，一任阶前，点滴到天明。
               </p>
-              <p>- [南宋] 蒋捷《虞美人·听雨》</p>
+              <p className="mt-2">[南宋] 蒋捷《虞美人·听雨》</p>
             </div>
           </div>
 
           <div className="flex-1"></div>
 
-          <div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
+          <div className="w-[60px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
             <Image
               alt="my cat"
-              height={176}
-              width={176}
+              height={156}
+              width={156}
               src="/images/avatar.png"
               className="rounded-full filter grayscale-9"
             />
           </div>
         </div>
-        <h3 className="heti--classic font-bold text-1xl md:text-3xl tracking-tight mb-6 text-black dark:text-white">
-          最新文章
-        </h3>
 
-        <div className="flex gap-6 flex-col md:flex-row px-1">
+        <BlockTitle>最新文章</BlockTitle>
+
+        <div className="flex gap-8 flex-col md:flex-row px-1">
           <PostCard
             title="
             Flutter 为应用开发带来了革新：一套代码库，即可构建、发布适用于不同系统的精美应用。"
@@ -91,13 +92,11 @@ export default function Home({ posts }: { posts: Post[] }) {
         </div>
         {readAll}
 
-        <h3 className="heti--classic font-bold text-1xl md:text-3xl tracking-tight mb-4 mt-16 text-black dark:text-white">
-          推荐文章
-        </h3>
-        <div className="px-1">
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
-            代码生成器框架 Codegem 的使用教程
-          </p>
+        <div className="mb-16"></div>
+
+        <BlockTitle>推荐文章</BlockTitle>
+        <div className="px-1 w-full">
+          <p className="mb-4">代码生成器框架 Codegem 的使用教程</p>
           <PostListItem
             index="01"
             href="https://www.youtube.com/watch?v=MxR5I5_hOKk&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=2"

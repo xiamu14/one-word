@@ -96,28 +96,28 @@ export default function Home({ posts }: { posts: Post[] }) {
 
         <BlockTitle>推荐文章</BlockTitle>
         <div className="px-1 w-full">
-          <p className="mb-4">代码生成器框架 Codegem 的使用教程</p>
+          {/* <p className="mb-4">代码生成器框架 Codegem 的使用教程</p> */}
           <PostListItem
             index="01"
-            href="https://www.youtube.com/watch?v=MxR5I5_hOKk&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=2"
-            length="15 分钟"
+            slug="https://www.youtube.com/watch?v=MxR5I5_hOKk&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=2"
+            length="15分钟"
             title="略窥门径：Codegem 的简介"
           />
           <PostListItem
             index="02"
-            href="https://www.youtube.com/watch?v=AGl52moyISU&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=3"
-            length="30 分钟"
+            slug="https://www.youtube.com/watch?v=AGl52moyISU&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=3"
+            length="30分钟"
             title="小试牛刀：快速生成 SVG 图标组件库（React）"
           />
           <PostListItem
             index="03"
-            href="https://www.youtube.com/watch?v=3g6-v3_BNbM&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=4"
+            slug="https://www.youtube.com/watch?v=3g6-v3_BNbM&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=4"
             length="43分钟"
             title="庖丁解牛：解析 Codegem 源码"
           />
           <PostListItem
             index="04"
-            href="https://www.youtube.com/watch?v=u8iv_yhSRI8&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=5"
+            slug="https://www.youtube.com/watch?v=u8iv_yhSRI8&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=5"
             length="40分钟"
             title="驾轻就熟：自定义加载器（load）和生成器（machine）"
           />

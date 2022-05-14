@@ -1,7 +1,7 @@
 .inkstone {
   font-family: "Nunito", times, "Heti Song", serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol";
-  color: rgb(57, 57, 57);
+  color: rgb(50, 49, 49);
 }
 
 .inkstone code {
@@ -19,14 +19,23 @@
   font-size: 20px;
   line-height: 36px;
   font-weight: 800;
-  margin-block-start: 12px;
-  margin-block-end: 24px;
+  margin-block-start: 20px;
+  margin-block-end: 20px;
+  letter-spacing: 0.1em;
+}
+
+.inkstone-paragraph h4 {
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 700;
+  margin-block-start: 20px;
+  margin-block-end: 20px;
   letter-spacing: 0.1em;
 }
 
 .inkstone-paragraph p {
-  margin-block-start: 12px;
-  margin-block-end: 24px;
+  margin-block-start: 18px;
+  margin-block-end: 20px;
   letter-spacing: 0.05em;
 }
 
@@ -42,4 +51,26 @@
 .inkstone-paragraph ol,
 .inkstone-paragraph ul {
   padding-inline-start: 36px;
+}
+
+.inkstone-paragraph a {
+  color: #3b82f6;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.inkstone-paragraph .step h4 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  letter-spacing: 0;
+}
+
+.inkstone-paragraph .step + p {
+  margin-block-start: 8px;
+  margin-block-end: 12px;
+  padding-left: 2.5em;
+}
+
+.inkstone-paragraph a:hover {
+  color: #1d4ed8;
 }

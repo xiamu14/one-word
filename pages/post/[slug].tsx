@@ -7,7 +7,7 @@ import BlogLayout from "../../layouts/blog";
 import mdxCustomComponents from "../../components/mdx_component";
 
 export async function getStaticPaths() {
-  const paths = allPosts.map((post) => post.url);
+  const paths = allPosts.map((s) => ({ params: { slug: s.slug } }));
   return {
     paths,
     fallback: false,
@@ -15,9 +15,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = allPosts.find(
-    (post) => post._raw.flattenedPath === params?.slug
-  );
+  const post = allPosts.find((post) => post.slug === params?.slug);
   return {
     props: {
       post,
@@ -25,7 +23,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-const PostLayout = ({ post }: { post: Post }) => {
+const PostPage = ({ post }: { post: Post }) => {
   const Component = useMDXComponent(post.body.code);
   return (
     <BlogLayout post={post}>
@@ -34,4 +32,4 @@ const PostLayout = ({ post }: { post: Post }) => {
   );
 };
 
-export default PostLayout;
+export default PostPage;

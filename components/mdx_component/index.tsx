@@ -7,6 +7,7 @@ import {
 } from "react";
 import NextImage from "next/image";
 import styles from "./index.module.scss";
+import Step from "../step";
 
 const Pre = ({ children, ...otherProps }: PropsWithChildren<any>) => {
   const textInput = useRef<HTMLDivElement>(null);
@@ -125,6 +126,7 @@ export function Image(props: ImageProps) {
 const mdxCustomComponents = {
   pre: Pre,
   Image: Image,
+  Step: Step,
 };
 
 export default mdxCustomComponents;

@@ -27,7 +27,7 @@ export default function Posts({
             <PostListItem
               key={index}
               index={`${index < 10 ? "0" : ""}${index + 1}`}
-              href={post.url}
+              slug={post.slug}
               length={post.readingTime.text}
               title={post.title}
             />

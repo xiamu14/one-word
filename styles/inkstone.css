@@ -1,7 +1,7 @@
 .inkstone {
   font-family: "Nunito", times, "Heti Song", serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol";
-  color: rgb(50, 49, 49);
+  color: rgb(46, 46, 46);
 }
 
 .inkstone code {
@@ -37,6 +37,7 @@
   margin-block-start: 18px;
   margin-block-end: 20px;
   letter-spacing: 0.05em;
+  font-size: 17px;
 }
 
 .inkstone-paragraph p > code {

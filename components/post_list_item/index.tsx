@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AiOutlineRead } from "react-icons/ai";
+import styles from './index.module.scss'
 export default function PostListItem({
   slug,
   length,
@@ -14,7 +15,7 @@ export default function PostListItem({
   return (
     <Link href={`/post/${slug}`}>
       <a className="w-full" aria-label={title} rel="noopener noreferrer">
-        <div className="w-full border-b border-gray-200 dark:border-gray-700 py-4 transform hover:scale-[1.01] transition-all">
+        <div className={`w-full border-b border-gray-200 dark:border-gray-700 py-3 transition-all ${styles['post_list_element']}`}>
           <div className="w-full flex flex-col sm:flex-row justify-between items-baseline">
             <div className="flex items-center">
               <div className="text-gray-400 dark:text-gray-400 text-left mr-4">

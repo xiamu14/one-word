@@ -62,3 +62,9 @@ div {
 li::marker {
   color: rgba(163, 163, 163, 0.9);
 }
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: .15s;
+}

@@ -5,6 +5,4 @@ export default defineConfig({
     include: ["**/*.{jsx,css,tsx}"],
     exclude: ["node_modules", ".git", ".next/**/*"],
   },
-  attributify: true,
-  shortcuts: {},
 });

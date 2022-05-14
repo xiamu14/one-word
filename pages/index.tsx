@@ -16,7 +16,7 @@ export async function getStaticProps() {
     .sort((a, b) => {
       return compareDesc(new Date(a.date), new Date(b.date));
     });
-  const recentPosts = posts.slice(0, 3);
+  const recentPosts = posts.filter(it=>!it.recommend).slice(0, 3);
   const recommendPosts = posts.filter((it) => it.recommend);
   return { props: { recommendPosts, recentPosts } };
 }
@@ -103,7 +103,7 @@ const Home = ({
 
         <div className="h-16"></div>
 
-        <BlockTitle>推荐文章</BlockTitle>
+        <BlockTitle>精选文章</BlockTitle>
         <div className="px-1 w-full">
           {/* <p className="mb-4">代码生成器框架 Codegem 的使用教程</p> */}
 

@@ -41,6 +41,10 @@ export const Post = defineDocumentType(() => ({
       type: "boolean",
       description: "recommend",
     },
+    recently: {
+      type:'boolean',
+      description:'recently'
+    }
   },
   computedFields,
 }));

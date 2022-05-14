@@ -12,8 +12,11 @@ export default function Posts({
     <Container>
       <div className="flex flex-col items-start justify-center w-full mb-8">
         <BlockTitle>博客</BlockTitle>
+        <p className="mb-1 text-gray-600 dark:text-gray-400">
+          这是我的博客专栏，名曰“言之有物”，出自《周易·家人》：“君子以言有物，而行有恒”。
+        </p>
         <p className="mb-2 text-gray-600 dark:text-gray-400">
-          {`这是我最新的博客专栏。目前为止，我已经写了 ${posts.length} 篇文章，记录一些软件编程的知识和生活中的感受。`}
+          {`我从 2019 年开始写作，迄今为止，我已经写了 ${posts.length} 篇文章，记录一些各种知识和生活感受。`}
         </p>
 
         <div className="mb-16"></div>

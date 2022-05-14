@@ -1,8 +1,7 @@
-import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import { compareDesc, format, parseISO } from "date-fns";
-import { allPosts, Post } from "contentlayer/generated";
+import { compareDesc } from "date-fns";
+import { allPosts } from "contentlayer/generated";
 import Container from "../components/container";
 import PostCard from "../components/post_card";
 import PostListItem from "../components/post_list_item";
@@ -16,8 +15,9 @@ export async function getStaticProps() {
     .sort((a, b) => {
       return compareDesc(new Date(a.date), new Date(b.date));
     });
-  const recentPosts = posts.filter(it=>!it.recommend).slice(0, 3);
-  const recommendPosts = posts.filter((it) => it.recommend);
+  const recentPosts = posts.filter((it) => it.recently).slice(0, 3);
+  const recommendPosts = posts.filter((it) => it.recommend).slice(0, 6);
+
   return { props: { recommendPosts, recentPosts } };
 }
 
@@ -68,7 +68,9 @@ const Home = ({
                 <br />
                 悲欢离合总无情，一任阶前，点滴到天明。
               </p>
-              <p className="mt-2">[南宋] 蒋捷《虞美人·听雨》</p>
+              <p className="mt-4 text-gray-600 ">
+                [ 南宋 ] 蒋捷《虞美人·听雨》
+              </p>
             </div>
           </div>
 
@@ -105,8 +107,6 @@ const Home = ({
 
         <BlockTitle>精选文章</BlockTitle>
         <div className="px-1 w-full">
-          {/* <p className="mb-4">代码生成器框架 Codegem 的使用教程</p> */}
-
           {recommendPosts.map((item, index) => {
             return (
               <PostListItem

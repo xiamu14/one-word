@@ -1,4 +1,4 @@
 {
   "cSpell.words": ["Contentlayer", "heti", "inkstone", "rehype", "semibold"],
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
 }

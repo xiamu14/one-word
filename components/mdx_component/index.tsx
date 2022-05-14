@@ -1,13 +1,15 @@
-import {
+import React, {
   PropsWithChildren,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
 import NextImage from "next/image";
 import styles from "./index.module.scss";
 import Step from "../step";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Pre = ({ children, ...otherProps }: PropsWithChildren<any>) => {
   const textInput = useRef<HTMLDivElement>(null);
@@ -123,8 +125,79 @@ export function Image(props: ImageProps) {
   );
 }
 
+const Nav = ({ children }: PropsWithChildren<{}>) => {
+  const [showNav, setShowNav] = useState(false);
+  // console.log(
+  //   "%c debug",
+  //   "background: #69c0ff; color: white; padding: 4px",
+  //   children
+  // );
+
+  const abstractList = useMemo(() => {
+    const list: number[] = [];
+    // @ts-ignore
+    const count = children?.props?.children?.length ?? 0;
+    for (let i = 0; i < Math.min(count, 6) - 1; i += 1) {
+      list.push(i);
+    }
+    // console.log(
+    //   "%c debug",
+    //   "background: #69c0ff; color: white; padding: 4px",
+    //   count,
+    //   list
+    // );
+
+    return list;
+  }, [children]);
+
+  if (abstractList.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className={styles["toc"]}>
+      <AnimatePresence>
+        {!showNav ? (
+          <motion.div
+            initial={{ opacity: 0, transform: "translateX(20px)" }}
+            animate={{ opacity: 1, transform: "translateX(0px)" }}
+            exit={{ opacity: 0 }}
+            transition={{ type: "spring" }}
+          >
+            <nav onMouseEnter={() => setShowNav(() => true)}>
+              <ul className={styles["toc-abstract-entries"]}>
+                <li
+                  className={`${styles["toc-entry"]} ${styles["toc-title"]}`}
+                ></li>
+                {abstractList.map((item) => {
+                  return <li key={item} className={styles["toc-entry"]}></li>;
+                })}
+              </ul>
+            </nav>
+          </motion.div>
+        ) : (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ type: "spring" }}
+          >
+            <nav
+              className={styles["toc-nav"]}
+              onMouseLeave={() => setShowNav(() => false)}
+            >
+              {children}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 const mdxCustomComponents = {
   pre: Pre,
+  nav: Nav,
   Image: Image,
   Step: Step,
 };

@@ -4,6 +4,8 @@ import {
   makeSource,
 } from "contentlayer/source-files";
 import rehypePrism from "rehype-prism-plus";
+import rehypeSlug from "rehype-slug";
+import rehypeToc from "@jsdevtools/rehype-toc";
 import readingTime from "reading-time";
 
 const computedFields: ComputedFields = {
@@ -42,9 +44,9 @@ export const Post = defineDocumentType(() => ({
       description: "recommend",
     },
     recently: {
-      type:'boolean',
-      description:'recently'
-    }
+      type: "boolean",
+      description: "recently",
+    },
   },
   computedFields,
 }));
@@ -64,5 +66,16 @@ const Snippet = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: "data",
   documentTypes: [Post, Snippet],
-  mdx: { rehypePlugins: [rehypePrism] },
+  mdx: {
+    rehypePlugins: [
+      rehypePrism,
+      rehypeSlug,
+      [
+        rehypeToc,
+        {
+          headings: ["h3"],
+        },
+      ],
+    ],
+  },
 });

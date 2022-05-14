@@ -17,6 +17,12 @@ export default function BlogLayout({
   children,
   post,
 }: PropsWithChildren<{ post: Post }>) {
+  console.log(
+    "%c debug",
+    "background: #69c0ff; color: white; padding: 4px",
+    post
+  );
+
   return (
     <Container>
       <article className="inkstone-paragraph flex flex-col items-start justify-center w-full mx-auto px-2 mb-16">

@@ -60,10 +60,24 @@
   font-weight: 500;
 }
 
+.inkstone-paragraph nav a {
+  text-decoration: none;
+}
+
 .inkstone-paragraph .step h4 {
   margin-block-start: 0;
   margin-block-end: 0;
   letter-spacing: 0;
+}
+
+.inkstone-paragraph nav ol li {
+  list-style-type: "";
+  margin-bottom: 4px;
+}
+
+.inkstone-paragraph nav ol li > a {
+  color: rgba(75, 85, 99, 0.7);
+  font-size: 14px;
 }
 
 .inkstone-paragraph .step + p {

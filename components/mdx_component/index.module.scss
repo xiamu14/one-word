@@ -18,3 +18,37 @@
     background-color: rgba(0, 0, 0, 0);
   }
 }
+
+.toc {
+  position: fixed;
+  left: 4rem;
+  top: 36%;
+  width: calc(50vw - 32rem);
+  // transform: translateY(-68%);
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.toc-nav {
+  min-width: 120px;
+  min-height: 160px;
+}
+
+.toc-abstract-entries {
+  position: relative;
+  margin-top: 7px;
+  margin-left: 0;
+  opacity: 1;
+  z-index: -1;
+  user-select: none;
+  .toc-entry {
+    width: 14px;
+    border-bottom: 2px solid var(--hp-color-border, #c1c7cd);
+    margin-left: 4px;
+    height: 25px;
+  }
+  .toc-title {
+    width: 24px;
+  }
+}

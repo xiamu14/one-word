@@ -11,7 +11,7 @@ interface Props {
 function SnippetCard({ title, description, slug, logo }: Props) {
   return (
     <Link href={`/snippet/${slug}`}>
-      <a className="border border-grey-200 dark:border-gray-800 rounded p-4 w-full bg-white dark:bg-gray-900">
+      <a className="border border-grey-200 dark:border-gray-800 rounded p-4 w-full min-h-[150px] bg-white dark:bg-gray-900">
         <Image
           alt={title}
           height={32}

@@ -12,15 +12,15 @@ export default function PostCard({
 }) {
   const views = Math.ceil(Math.random()) * 100;
   return (
-    <Link href={`/blog/${slug}`}>
+    <Link href={`/post/${slug}`}>
       <a
         className={clsx(
           "transform hover:scale-[1.01] transition-all",
-          "rounded-xl w-full md:w-1/3 bg-gradient-to-r p-1",
+          "rounded-xl min-h-[200px] w-full md:w-1/3 bg-gradient-to-r p-1",
           gradient
         )}
       >
-        <div className="flex flex-col justify-between h-full bg-white dark:bg-gray-700 rounded-lg p-6">
+        <div className="  flex flex-col justify-between h-full bg-white dark:bg-gray-700 rounded-lg p-6">
           <div className="flex flex-col md:flex-row justify-between">
             <h4 className="text-lg md:text-lg font-medium mb-6 sm:mb-10 w-full dark:text-gray-100 tracking-tight">
               {title}

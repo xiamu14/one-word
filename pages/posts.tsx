@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { InferGetStaticPropsType } from "next";
 
 import { allPosts } from "contentlayer/generated";
@@ -41,9 +39,9 @@ export default function Posts({
 }
 
 export function getStaticProps() {
-  const posts = allPosts.sort(
-    (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
-  );
+  const posts = allPosts
+    .filter((it) => !it.draft)
+    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
   return { props: { posts } };
 }

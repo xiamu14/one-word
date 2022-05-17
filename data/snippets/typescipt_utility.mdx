@@ -1,0 +1,22 @@
+---
+title: "TypeScript utility type"
+description: "The collection of TypeScript utility type."
+logo: "buttondown.png"
+---
+
+### 1. 继承函数的参数
+
+```ts
+type AddParameters<
+  TFn extends (...args: never[]) => void,
+  TParams extends [...args: unknow[]]
+> = (...args: [...Parameters<TFn>, ...TParams]) => ReturnType<TFn>;
+```
+
+**使用方式**
+
+```ts
+type One = (x: number) => void;
+// type Two = (x: number, y:string) => void
+type Two = AddParameters<One, [y: string]>;
+```

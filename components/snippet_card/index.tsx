@@ -17,7 +17,7 @@ function SnippetCard({ title, description, slug, logo }: Props) {
           height={32}
           width={32}
           src={`/logos/${logo}`}
-          className="rounded-full"
+          className="rounded-sm"
         />
         <h3 className="text-lg font-bold text-left mt-2 text-gray-900 dark:text-gray-100">
           {title}

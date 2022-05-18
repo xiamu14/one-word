@@ -29,7 +29,7 @@ export default function SnippetLayout({
               height={48}
               width={48}
               src={`/logos/${snippet.logo}`}
-              className="rounded-full"
+              className="rounded-sm"
             />
           </div>
         </div>

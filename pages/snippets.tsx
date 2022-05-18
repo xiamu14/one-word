@@ -13,7 +13,7 @@ export default function Snippets({
       <div className="flex flex-col items-start justify-center w-full mb-8">
         <BlockTitle>只言片语</BlockTitle>
         <p className="mb-2 text-gray-600 dark:text-gray-400">
-          这里记录了我所有的灵感一闪，正渐渐汇聚成思想之海。
+          这里记录的灵感一闪，正渐渐汇聚成思想之海。
         </p>
         <div className="mb-6"></div>
         <div className="grid w-full grid-cols-2 gap-6 my-2 mt-4 sm:grid-cols-3">

@@ -27,6 +27,7 @@ export default function Snippets({
             />
           ))}
         </div>
+        <span className="h-16" />
       </div>
     </Container>
   );

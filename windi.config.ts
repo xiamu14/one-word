@@ -5,4 +5,8 @@ export default defineConfig({
     include: ["**/*.{jsx,css,tsx}"],
     exclude: ["node_modules", ".git", ".next/**/*"],
   },
+  plugins: [
+    require("windicss/plugin/line-clamp"),
+    // ...
+  ],
 });

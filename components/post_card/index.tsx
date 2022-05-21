@@ -5,10 +5,12 @@ export default function PostCard({
   title,
   slug,
   gradient,
+  description,
 }: {
   title: string;
   slug: string;
   gradient: string;
+  description: string;
 }) {
   const views = Math.ceil(Math.random()) * 100;
   return (
@@ -22,10 +24,12 @@ export default function PostCard({
       >
         <div className="  flex flex-col justify-between h-full bg-white dark:bg-gray-700 rounded-lg p-6">
           <div className="flex flex-col md:flex-row justify-between">
-            <h4 className="text-lg md:text-lg font-medium mb-6 sm:mb-10 w-full dark:text-gray-100 tracking-tight">
+            <h3 className="text-xl font-bold mb-4 w-full dark:text-gray-100 tracking-tight">
               {title}
-            </h4>
+            </h3>
           </div>
+          <p className="line-clamp-2 text-gray-600">{description}</p>
+          <div className="flex-1"></div>
           <div className="flex items-center text-gray-800 dark:text-gray-200 capsize">
             <svg
               xmlns="http://www.w3.org/2000/svg"

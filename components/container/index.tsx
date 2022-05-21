@@ -73,7 +73,7 @@ export default function Container(
             <NavItem
               href="/snippets"
               text="片段"
-              isActive={router.pathname === "/snippets"}
+              isActive={router.pathname.includes("/snippet")}
             />
             {/* <NavItem href="/profile" text="我的" /> */}
             <NavItem

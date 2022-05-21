@@ -97,6 +97,7 @@ const Home = ({
                 title={item.title}
                 slug={item.slug}
                 gradient={gradients[index]}
+                description={item.description ?? ""}
               />
             );
           })}

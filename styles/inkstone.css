@@ -41,7 +41,7 @@
 }
 
 .inkstone-paragraph p > code {
-  background: var(--code-bgd-color);
+  background: var(--code-inline-bgd-color);
   color: var(--code-inner-color);
   vertical-align: baseline;
   padding: 0.05em 0.3em 0.2em;

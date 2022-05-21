@@ -31,7 +31,7 @@ body {
   --gradient1-color: #2f3747;
   --gradient2-color: #0d0f14;
   --header-btn-color: #4a5568;
-  --code-inner-color: #718096;
+  --code-inner-color: #607ba2;
   --code-token1-color: #d5408c;
   --code-token2-color: #805ad5;
   --code-token3-color: #319795;
@@ -65,6 +65,6 @@ li::marker {
 
 .transition-all {
   transition-property: all;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-  transition-duration: .15s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.15s;
 }

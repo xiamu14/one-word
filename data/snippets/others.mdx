@@ -1,0 +1,86 @@
+---
+title: "Others"
+description: "代码片段：脚本、快捷别名等"
+logo: "document.png"
+---
+
+### 1. git alias
+
+```shell
+alias glpd='git log --stat --abbrev-commit --date=format:"%Y-%m-%d %H:%M:%S"'
+```
+
+**🐠 使用方式**
+
+在 `~/.zshrc` 里添加即可
+
+### 2. move array
+
+```ts
+/**
+ * @param {array} arr  需要移动的数组
+ * @param {number} n 需要移动的位数，正数后移，负数前移
+ * @return {array} 移动后的数组
+ */
+export default function moveArray(arr: any[], n: number): any[] {
+  if (Math.abs(n) > arr.length) {
+    // eslint-disable-next-line no-param-reassign
+    n %= arr.length;
+  }
+  return arr.slice(-n).concat(arr.slice(0, -n));
+}
+```
+
+**🐠 使用方式**
+
+```ts
+const arr = [1, 2, 3, 4];
+const newArr = moveArray(arr, 1); // 数组右移一位
+// output [4，1，2，3]
+moveArray(arr, -1); // 数组左移一位
+// output [2, 3, 4, 1]
+```
+
+### 3. write CSSProperties by original css
+
+```ts
+function toCamel(str: string) {
+  return str.replace(/^-/, "").replace(/-(\w)(\w+)/g, (_, b, c) => {
+    return b.toUpperCase() + c.toLowerCase();
+  });
+}
+
+export default function css(
+  staticContent: TemplateStringsArray,
+  ...dynamic: string[]
+) {
+  let res = "";
+  for (let i = 0; i < staticContent.length; i += 1) {
+    res += `${staticContent[i]}${
+      i < staticContent.length - 1 ? dynamic[i] : ""
+    }`;
+  }
+  const tmp = res.trim();
+  const tmpArr = tmp.split(";");
+  const result = {};
+  tmpArr.forEach((item) => {
+    if (item) {
+      const arr = item.split(":");
+      result[toCamel(arr[0]).trim()] = arr[1].trim();
+    }
+  });
+  return result as React.CSSProperties;
+}
+```
+
+**🐠 使用方式**
+
+```tsx
+<div
+  style={css`
+    min-width: 100px;
+    display: flex;
+    justify-align: center;
+  `}
+></div>
+```

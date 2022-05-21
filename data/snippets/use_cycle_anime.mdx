@@ -1,0 +1,119 @@
+---
+title: "useCycleAnime"
+description: "优化周期动画的 react hook。"
+logo: "react.png"
+---
+
+### 优化周期动画的 react hook
+
+```ts
+import { useState, useEffect, useRef, useCallback } from "react";
+
+enum State {
+  RUNNING,
+  FINISHED,
+}
+
+export default function useCycleAnime({
+  delay,
+  period,
+  onRun,
+  onFinish,
+  debug,
+}: {
+  delay: number;
+  period: number;
+  onRun: () => void;
+  onFinish: () => void;
+  debug?: boolean;
+}) {
+  const [state, setState] = useState<State>();
+  const startRef = useRef();
+  const stateRef = useRef();
+  const delayRef = useRef(delay);
+  const periodRef = useRef(period);
+  const debugRef = useRef(debug);
+  useEffect(() => {
+    setTimeout(() => {
+      if (stateRef.current !== State.FINISHED) {
+        setState(State.RUNNING);
+      }
+    }, delayRef.current);
+  }, []);
+
+  useEffect(() => {
+    if (state === State.RUNNING) {
+      startRef.current = Date.now();
+      onRun();
+    }
+    if (state === State.FINISHED) {
+      if (debugRef.current && startRef.current) {
+        console.log("--running time", Date.now() - startRef.current);
+      }
+      onFinish();
+    }
+    stateRef.current = state;
+  }, [state, onRun, onFinish]);
+
+  const stop = useCallback(() => {
+    if (stateRef.current === State.RUNNING) {
+      const runTime = Date.now() - startRef.current;
+      const duration =
+        runTime < periodRef.current
+          ? periodRef.current - runTime
+          : periodRef.current - (runTime % periodRef.current);
+      if (debugRef.current) {
+        console.log(
+          "--duration",
+          runTime,
+          periodRef.current % runTime,
+          duration
+        );
+      }
+      if (duration > 0) {
+        // TODO: 完成动画周期
+        setTimeout(() => {
+          setState(State.FINISHED);
+        }, duration);
+      } else {
+        setState(State.FINISHED);
+      }
+    } else {
+      setState(State.FINISHED);
+    }
+  }, []);
+
+  return { stop };
+}
+```
+
+**🐠 使用方式**
+
+```ts
+import { useEffect } from "react";
+import useCycleAnime from "./use_cycle_anime";
+
+export default function App() {
+  const { stop } = useCycleAnime({
+    delay: 300, // 设置等待时间 ms
+    period: 300, // 设置动画周期时长 ms
+    onRun: () => {
+      // 等待时间到达时，没有触发 stop ，则触发
+      console.log("触发动画");
+    },
+    onFinish: () => {
+      // stop 触发完成（会补充动画周期）
+      console.log("触发结束");
+    },
+    debug: true, // 开启会打印时间信息
+  });
+
+  useEffect(() => {
+    setTimeout(() => {
+      stop();
+    }, 400);
+  }, [stop]);
+
+  return <div className="App"></div>;
+}
+```

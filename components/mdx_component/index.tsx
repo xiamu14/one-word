@@ -37,12 +37,12 @@ const Pre = ({ children, ...otherProps }: PropsWithChildren<any>) => {
       onMouseEnter={onEnter}
       onMouseLeave={onExit}
     >
-      <div ref={textInput}>
+      <div ref={textInput} className={styles["pre-container"]}>
         <pre {...otherProps}>{children}</pre>
       </div>
       {hovered && (
         <button
-          className={`absolute right-2 top-2 h-8 w-8 rounded bg-light-50 p-1 
+          className={`absolute right-2 top-2 h-8 w-8 rounded bg-light-50 p-1 bg-opacity-90
           }`}
           onClick={handleCopy}
         >

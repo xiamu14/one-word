@@ -1,9 +1,12 @@
 .pre-box {
   position: relative;
   border: 1px solid transparent;
-  border-radius: 10px;
   width: 99%;
   margin: 0 auto;
+  .pre-container {
+    border: 1px solid #d6dde4;
+    background: var(--code-bgd-color) !important;
+  }
   .btn-copy {
     position: absolute;
     top: 16px;

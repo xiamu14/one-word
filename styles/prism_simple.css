@@ -43,14 +43,12 @@ pre[class*="language-"].is-terminal code {
 }
 /* Code blocks */
 pre[class*="language-"] {
-  padding: 0.5em;
-  margin: 0 auto;
+  margin: 0.65em;
   overflow-x: auto;
-  border: 1px solid #d6dde4;
   font-size: 1.3em;
-  line-height: 1.2;
+  line-height: 1;
   box-sizing: border-box;
-  min-height: 58px;
+  /* min-height: 58px; */
 }
 
 pre[class*="language-"]::-webkit-scrollbar {

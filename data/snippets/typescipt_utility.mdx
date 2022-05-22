@@ -4,7 +4,7 @@ description: "The collection of TypeScript utility type."
 logo: "typescript.png"
 ---
 
-### 1. 继承函数的参数
+### 继承函数的参数
 
 ```ts
 type AddParameters<
@@ -19,4 +19,24 @@ type AddParameters<
 type One = (x: number) => void;
 // type Two = (x: number, y:string) => void
 type Two = AddParameters<One, [y: string]>;
+```
+
+### 设置部分属性可选
+
+```ts
+type PartialSome<T, S extends keyof T> = {
+  [K in keyof Omit<T, S>]: T[K];
+} & {
+  [P in S]?: T[P];
+};
+```
+
+**🐠 使用方式**
+
+```ts
+const a = { a: "1", b: "1" };
+
+type Part = PartialSome<typeof a, "b">; // = {a:string, b?:string}
+
+const part: Part = { a: "" };
 ```

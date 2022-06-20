@@ -1,0 +1,24 @@
+---
+title: "JS 中的洋葱模型"
+description: "洋葱模型"
+logo: "typescript.png"
+---
+
+洋葱模型是一种很经典的程序设计思路。
+
+```ts
+type MiddleFunction = (next: (args?: any) => void) => void;
+
+export function compose(middleware: MiddleFunction[]) {
+  return async () => {
+    await dispatch(0);
+    async function dispatch(index: number) {
+      if (index === middleware.length) return null;
+      const fn = middleware[index];
+      await fn(function next() {
+        dispatch(index + 1);
+      });
+    }
+  };
+}
+```

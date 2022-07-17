@@ -24,7 +24,7 @@ function NavItem({
           isActive
             ? "font-extrabold text-gray-700 dark:text-gray-200"
             : "font-normal text-gray-600 dark:text-gray-400",
-          "hidden md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
+          "md:inline-block p-1 sm:px-3 sm:py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all"
         )}
       >
         <span className="capsize">{text}</span>
@@ -47,7 +47,7 @@ export default function Container(
       <Head>
         <title>{props.title ?? "言之有物"}</title>
       </Head>
-      <div className=" flex flex-col items-center justify-between w-4xl h-full margin-auto">
+      <div className=" flex flex-col items-center justify-between w-4xl <sm:w-96 h-full margin-auto">
         <div
           className={`flex w-full justify-start items-center px-4 sticky  ${styles["nav-box"]}`}
         >

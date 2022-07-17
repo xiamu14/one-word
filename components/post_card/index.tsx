@@ -18,7 +18,7 @@ export default function PostCard({
       <a
         className={clsx(
           "transform hover:scale-[1.01] transition-all",
-          "rounded-xl min-h-[200px] w-full md:w-1/3 bg-gradient-to-r p-1",
+          "rounded-xl w-full md:w-1/3 bg-gradient-to-r p-1",
           gradient
         )}
       >
@@ -28,7 +28,7 @@ export default function PostCard({
               {title}
             </h3>
           </div>
-          <p className="line-clamp-2 text-gray-600">{description}</p>
+          <p className="line-clamp-2 text-gray-600 mb-[20px]">{description}</p>
           <div className="flex-1"></div>
           <div className="flex items-center text-gray-800 dark:text-gray-200 capsize">
             <svg

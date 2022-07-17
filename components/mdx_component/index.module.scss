@@ -55,3 +55,9 @@
     width: 24px;
   }
 }
+
+@media (max-width: 639.9px) {
+  .toc {
+    display: none;
+  }
+}

@@ -1,5 +1,62 @@
 ---
 title: 略窥门径：Codegem 的简介
-date: 2022-05-04
+date: 2022-07-04
 recommend: true
 ---
+
+### Codegem 是什么？
+
+现代前端开发中已有的代码生成器都是独立开发和使用的，因此代码生成器中的「读取元数据」和「生成代码文件」两部分程序逻辑没有抽象出来，当开发新的代码生成器时就无法复用，从而无法专注于元数据处理和代码生成逻辑。Codegem 就是解决这类问题的工具，帮助开发者快速开发新的代码生成器。
+
+### 为何需要 Codegem？
+
+随着需求增加，软件复杂度不断提高，大量重复而无法复用的代码也会日渐增多。比如：处理页面路由的配置代码，图标组件代码等，API 请求代码。这些都可以通过代码自动生成技术，让开发者只写简化后的元数据配置代码，然后通过代码生成器产出功能完善且复杂的运行代码。通过代码生成器，可以极大的提高开发效率，不用再重复写类似的代码，留出时间专注于更有意义的开发。
+
+因此，开发代码生成器也就成为软件工程一部分，也就必须根据实际需求，开发不同的代码生成器。如同代码生成器能够提高软件开发的效率一样，同样需要提高开发代码生成器的效率。Codegem 就是抽象了代码生成器相同的逻辑，并加以组合，从而使得开发者只需要关注「元数据处理」和「代码生成」两部分核心逻辑即可快速完成新的代码生成器。
+
+### 如何使用 Codegem？
+
+在项目中安装 codegem, `pnpm add codegem -D` 。
+
+在项目根目录中添加配置文件 codegemrc.ts，具体配置实例如下：
+
+```ts
+import { defineConfig } from "codegem";
+import loadFile from "codegem-load-file";
+import createIcon from "codegem-machine-icon";
+
+export default defineConfig({
+  output: "example/generated", // 根目录,所有生成文件统一生成在这个目录下
+  factory: [
+    {
+      use: [loadFile("./example/icon/source")], // 元数据处理，这里是读取 icon 文件信息
+      machine: createIcon("./example/generated/icon"), // 代码生成，生成 icon 组件代码
+    },
+  ],
+});
+```
+
+最后在命令行工具中运行: `codegem` 即可。
+
+最终生成的代码如下：
+
+```ts
+import React from "react";
+import { Image } from "@tarojs/components";
+import { ImageProps } from "@tarojs/components/types/Image";
+import test from "../../icon/source/test.png";
+
+type Props = Omit<ImageProps, "src">;
+
+const Test = React.memo((props: Props) => {
+  return <Image src={test} {...props}></Image>;
+});
+
+export default Test;
+```
+
+实际使用可以查看 [demo](https://github.com/codegem-z/codegem-example) 或真实项目 [dashboard-builder](https://www.dashboard-builder.dev/-/home)。
+
+### 结尾
+
+更详细的介绍和使用请看下篇文章[《驾轻就熟：自定义加载器和生成器》](https://one-word-phi.vercel.app/post/custom_codegem)

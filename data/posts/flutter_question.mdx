@@ -134,3 +134,47 @@ TextField(
   ),
 )
 ```
+
+### Q：为何在 initState 中请求数据？
+
+A：如果你的组件是有状态的，你可以在 initState() 或者 didChangeDependencies() 方法中调用 fetch 方法。
+
+initState() 只会被调用一次而且再也不会被调用。如果你需要在 InheritedWidget 改变的时候可以重新载入的话，可以把数据调用放在 didChangeDependencies() 方法中。
+
+```dart
+class _MyAppState extends State<MyApp> {
+  Future<Post> post;
+
+  @override
+  void initState() {
+    super.initState();
+    post = fetchPost();
+  }
+}
+```
+
+### Q：如何生成网络请求的数据类型？
+
+A：一般通过 fromJson 构造方法转换成数据类，restful api 可以通过 swagger 工具自动生成，graphql 也有相应的工具。示例代码如下：
+
+```dart
+class Course {
+  String? courseName; // ? 标识 nullable
+  int? price;
+
+  Course({this.courseName, this.price});
+
+  Course.fromJson(Map<String, dynamic> json) {
+    courseName = json['courseName'];
+    price = json['price'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['courseName'] = courseName;
+    data['price'] = price;
+    return data;
+  }
+}
+
+```

@@ -107,3 +107,30 @@ GestureDetector(
 )
 
 ```
+
+### Q: 如何获取 TextField 或 TextFormField 的 value？
+
+A：使用 controller，代码如下：
+
+```dart
+final emailController = TextEditingController(); // 定义
+final passwordController = TextEditingController();
+
+handleSubmit() {
+  print('email field:${emailController.text}'); // 读取
+  print('password field:${passwordController.text}');
+}
+...
+TextField(
+  controller: emailController, // 绑定
+  decoration: InputDecoration(
+    icon: Icon(
+      Icons.email_outlined,
+      color: (Colors.grey[400])!,
+      size: 26,
+    ),
+    hintText: 'Email ID',
+    hintStyle: TextStyle(color: Colors.grey[400]),
+  ),
+)
+```

@@ -1,0 +1,109 @@
+---
+title: Flutter 问答笔记
+date: 2022-07-28
+recommend: false
+recently: true
+description: 收集使用 Flutter 过程中遇到的问题，以及对应的解决方法。
+---
+
+### Q：报错：“flutter no Material Widget found”
+
+A：使用了 Material 风格的 Widget 需要 Scaffold 作为根布局，常用根布局如下：
+
+```dart
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'xxx',
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: SafeArea(
+          child: App(),
+        ),
+      ),
+    );
+  }
+}
+```
+
+### Q：Text 内容如何在 Container 容器 Widget 中居中显示？
+
+A: 通过设置 textAlign 属性的值为 TextAlign.center 就可以让 Text 内容居中。代码如下：
+
+```dart
+Container(
+  decoration: BoxDecoration(
+    color: const Color.fromARGB(255, 65, 113, 233),
+    borderRadius: BorderRadius.circular(10),
+  ),
+  width: 400,
+  padding: const EdgeInsets.symmetric(vertical: 12),
+  child: const Text(
+    'Login',
+    style: TextStyle(
+      color: Colors.white,
+    ),
+    textAlign: TextAlign.center,
+  ),
+)
+```
+
+### Q：如何去掉 Text 黄色双下划线？
+
+A：有时候定义的 Text 下面出现下划线，这是因为在 Flutter 中，Text 组件是属于 Material 风格的，这就要求根组件也是 Material 风格的，比如 Scaffold ，否则 UI 展示会出问题。
+解决方法添加 decoration 属性为 TextDecoration.none。代码如下：
+
+```dart
+Text(
+  'OR',
+  style: TextStyle(
+    color: (Colors.grey[500])!,
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+    decoration: TextDecoration.none,
+  ),
+),
+```
+
+### Q：如何让图片高度固定，宽度根据屏幕宽度适配？
+
+A：图片父容器使用 SizedBox，宽度设置 double.infinity(100%), 高度设置固定值，Image widget 里的 fit 属性设置适配方式，代码如下：
+
+```dart
+SizedBox(
+  width: double.infinity,
+  height: 300,
+  child: Image.asset(
+    'assets/conifer-dancing.png',
+    fit: BoxFit.contain,
+  ),
+),
+
+```
+
+### Q：如何给 Text 文本添加点击事件？
+
+A：使用 GestureDetector widget 包裹，或者改成 TextButton widget。代码如下：
+
+```dart
+GestureDetector(
+  onTap: () {}, // 点击事件具体操作添加到这里
+  child: const Text(
+    'Forgot Password?',
+    style: TextStyle(
+      color: Color.fromARGB(255, 65, 113, 233),
+      fontSize: 14,
+      decoration: TextDecoration.none,
+      fontWeight: FontWeight.normal,
+    ),
+  ),
+)
+
+```
